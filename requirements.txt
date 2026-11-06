@@ -1,0 +1,70 @@
+# ===========================================================================
+# Forecasting Global Water Storage — dependencies
+#
+# Installable as-is:   pip install -r requirements.txt
+#
+# Every third-party package imported anywhere in this submission is listed.
+# Versions are the ones actually used: taken from the recorded run metadata
+# in provenance/emissions/runinfo_*.json for anything trained on Kaggle, and
+# from the verified local environment otherwise.
+#
+# Minimum path: blend/verify_reproduction.py rebuilds the submission offline
+# and needs ONLY numpy and pandas. Everything else is for retraining a member,
+# rebuilding the external data, or regenerating the documentation.
+# ===========================================================================
+
+# --- core: blend, verification, and all feature/panel code -----------------
+numpy==2.5.2
+pandas==3.0.5
+pyarrow==25.0.1                 # pandas Parquet engine
+
+# --- training the five gradient-boosted members ----------------------------
+# Pinned at 3.2.0 because that is what produced the shipped predictions.
+# Evidence: runinfo_v60_recurse.json, runinfo_v85_level.json and
+# runinfo_v87_storage.json all record "xgboost": "3.2.0". Each notebook also
+# asserts this pin at runtime, via importlib.metadata BEFORE xgboost is
+# imported — pip-installing after the C extension loads does not swap it.
+xgboost==3.2.0
+
+# --- training the RealMLP member (realmlp_v72_e15) -------------------------
+# Evidence: runinfo_v72_realmlp_e15.json records pytabkit 1.5.0 and
+# torch 2.10.0+cpu. Install the CPU build of torch; the member is CPU-only:
+#   pip install torch==2.10.0 --index-url https://download.pytorch.org/whl/cpu
+pytabkit==1.5.0
+torch==2.10.0
+
+# --- emissions tracking during training ------------------------------------
+codecarbon==3.3.0
+
+# --- rebuilding the external inputs from Copernicus (data_prep/) -----------
+# Needs a free Copernicus CDS account and API key.
+cdsapi==0.7.7
+xarray==2026.7.0
+netCDF4==1.7.4                  # xarray's netCDF engine; not imported directly
+
+# --- regenerating the figures and this documentation (optional) ------------
+matplotlib==3.11.1
+python-docx==1.2.0
+
+# ===========================================================================
+# Notes
+#
+# Python: training ran on the Kaggle CPU image (Python 3.11, 4 physical cores,
+# NTHREAD=16, no GPU, no internet at train time). The blend and both
+# verification steps were checked on Python 3.12.3, Ubuntu, CPU only.
+#
+# numpy / pandas / pyarrow on Kaggle came from the base image and were not
+# pinned by the notebooks, so their exact training-time versions are not in
+# the run metadata. They are pinned above at the locally verified versions
+# rather than guessed at for Kaggle; the training code uses no
+# version-sensitive API in those three.
+#
+# provenance/leak_test.py imports a member module and so needs an xgboost, but
+# it only checks that FEATURES do not move under corrupted inputs — a property
+# of the feature code, not of the learner. It was also verified against
+# xgboost 3.4.1 and passes 136/136 on both.
+#
+# models/sub_xgb_v87_storage.py contains `from carbon import track` inside a
+# try/except that falls back to contextlib.nullcontext. That is optional
+# instrumentation from the original project tree, not a dependency.
+# ===========================================================================

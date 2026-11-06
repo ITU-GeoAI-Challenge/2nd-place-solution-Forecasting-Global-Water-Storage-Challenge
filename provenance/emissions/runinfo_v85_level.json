@@ -1,0 +1,15 @@
+{
+  "stem": "sub_xgb_v85_level",
+  "tag": "v85_level",
+  "best_iter": null,
+  "deep": 802,
+  "base": 487,
+  "slices": [
+    96
+  ],
+  "minutes": 58.2,
+  "xgboost": "3.2.0",
+  "nthread_requested": 16,
+  "nthread_effective": "16",
+  "cpu_count": 4
+}

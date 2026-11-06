@@ -1,0 +1,15 @@
+{
+  "stem": "sub_xgb_v60_recurse",
+  "tag": "v60_recurse",
+  "best_iter": 286,
+  "deep": 802,
+  "base": 802,
+  "slices": [
+    802
+  ],
+  "minutes": 246.7,
+  "xgboost": "3.2.0",
+  "nthread_requested": 16,
+  "nthread_effective": "16",
+  "cpu_count": 4
+}

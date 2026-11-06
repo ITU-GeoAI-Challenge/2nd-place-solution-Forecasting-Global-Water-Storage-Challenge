@@ -1,0 +1,15 @@
+{
+  "stem": "sub_xgb_v87_storage",
+  "tag": "v87_storage",
+  "best_iter": null,
+  "deep": 802,
+  "base": 487,
+  "slices": [
+    96
+  ],
+  "minutes": 84.7,
+  "xgboost": "3.2.0",
+  "nthread_requested": 16,
+  "nthread_effective": "16",
+  "cpu_count": 4
+}

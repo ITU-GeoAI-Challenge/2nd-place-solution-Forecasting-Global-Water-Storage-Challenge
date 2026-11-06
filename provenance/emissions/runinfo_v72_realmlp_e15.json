@@ -1,0 +1,11 @@
+{
+  "stem": "sub_realmlp_v72",
+  "tag": "v72_realmlp_e15",
+  "frac": 0.2,
+  "val_rmse": 0.6059895048728078,
+  "minutes": 59.4,
+  "pytabkit": "1.5.0",
+  "torch": "2.10.0+cpu",
+  "cpu_count": 4,
+  "seed": 42
+}

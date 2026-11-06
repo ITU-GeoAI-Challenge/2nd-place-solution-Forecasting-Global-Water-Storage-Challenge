@@ -1,0 +1,21 @@
+[15:55:29] loading
+[15:55:37] 15,715 cells, 166 months with observed TWS
+[15:55:37] test horizon mix: h1=94048 h2=62576 h3=46777 h4=31076 h5=15560 h6=15479 h7=15445
+[15:55:38] validation 1,113,012 rows | persistence 0.7754
+[15:55:47] training 2,362,804 rows x 132
+[15:55:47]   [mem] after Xt: rss 4.87 GB, peak 5.05 GB
+[15:55:53]   [mem] dmatrices built: rss 6.98 GB, peak 7.52 GB
+[0]	valid-rmse:0.76382
+[200]	valid-rmse:0.60591
+[400]	valid-rmse:0.60467
+[544]	valid-rmse:0.60475
+[16:19:51] VALIDATION RMSE 0.6044  best_iter=445
+[16:19:51] refitting on all months for 490 rounds x 5 seeds
+[16:20:06]   [mem] refit dmatrix: rss 6.71 GB, peak 8.47 GB
+[16:40:48]   seed 1/5 done
+[17:00:16]   seed 2/5 done
+[17:17:35]   seed 3/5 done
+[17:36:34]   seed 4/5 done
+[17:53:17]   seed 5/5 done
+[17:53:17] wrote /home/himanshu/Documents/Proj/Forecasting_Global_Water_Storage/subs/xgb_v32_era5.csv (280961 rows)
+[carbon] sub_xgb_v32_era5: 117.8 min | 0.0728 kWh | 52.0 g CO2eq  -> /home/himanshu/Documents/Proj/Forecasting_Global_Water_Storage/reports/emissions.csv
